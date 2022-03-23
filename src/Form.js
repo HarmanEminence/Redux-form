@@ -1,15 +1,17 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import { renderField } from "./helper/formFieldComponent";
 import "./Home.css";
 
 const required = (value) => (value ? undefined : "Required");
 
-const Form = (props) => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+const UserForm = (props) => {
+  const { handleSubmit, pristine, reset, submitting, initialValues, editdata } =
+    props;
   console.log(props, "propsssssssss");
   return (
-    <form onSubmit={handleSubmit} initialValues={props.initialValues}>
+    <form onSubmit={handleSubmit} initialValues={props && props.initialValues}>
       <>
         <h1>SubmitForm</h1>
         <div>
@@ -49,9 +51,12 @@ const Form = (props) => {
           </div>
         </div>
         <div>
+          {/* <Link to="/table"> */}
           <button className="submit" type="submit">
             Submit
           </button>
+          {/* </Link> */}
+
           <button className="reset" type="button" onClick={reset}>
             Clear Values
           </button>
@@ -63,4 +68,4 @@ const Form = (props) => {
 
 export default reduxForm({
   form: "simple", // a unique identifier for this form
-})(Form);
+})(UserForm);

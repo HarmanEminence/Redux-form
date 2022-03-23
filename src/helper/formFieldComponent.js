@@ -23,4 +23,3 @@ export const renderField = ({ input, label, type, meta }) => {
     </div>
   );
 };
-s;
